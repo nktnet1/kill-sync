@@ -27,26 +27,30 @@ npm install kill-sync
 Try with [Replit](https://replit.com/@nktnet1/kill-sync-example#index.js).
 
 ```javascript
+killSync(pid)
 killSync(pid, signal)
 killSync(pid, signal, recursive)
 ```
 - **`pid`**: a number denoting the [process identifier](https://en.wikipedia.org/wiki/Process_identifier)
-- **`signal`**: number or string denoting the [inter-process communication signals](https://en.wikipedia.org/wiki/Signal_(IPC))
-- **`recursive`**: optional boolean to enable tree-killing child processes (default: `false`)
+- **`signal`**: number or string denoting the [inter-process communication signals](https://en.wikipedia.org/wiki/Signal_(IPC)) (default: `'SIGTERM'`)
+- **`recursive`**: boolean to enable tree-killing child processes (default: `false`)
 
-Example 1: kill a process with `SIGINT`
+Example 1: kill a process with `SIGTERM`
 ```javascript
 const killSync = require('kill-sync');
-const pid = 12345;
-// Same as killSync(pid, 2);
-killSync(pid, 'SIGINT');
+killSync(31842840);
 ```
 
-Example 2: kill a process with `SIGINT` recursively
+Example 2: kill a process with `SIGINT`
 ```javascript
 const killSync = require('kill-sync');
-const pid = 12345;
-killSync(pid, 'SIGINT', true);
+killSync(5313514, 'SIGINT');
+```
+
+Example 3: kill a process with `SIGINT` recursively
+```javascript
+const killSync = require('kill-sync');
+killSync(315230, 'SIGINT', true);
 ```
 
 
