@@ -25,7 +25,8 @@ const getAllPids = (): PID_ITEM[] =>
     .trim()
     .split('\n')
     .map((row: string) => {
-      const [pid, ppid] = row.match(/\s*(\d+)\s*(\d+)/) ?? [];
+      const [, pid, ppid] = row.match(/\s*(\d+)\s*(\d+)/) ?? [];
+      console.log([pid, ppid]);
       return {
         pid: Number(pid),
         ppid: Number(ppid)

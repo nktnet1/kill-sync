@@ -6,9 +6,6 @@ Synchronousless kill processes based on their pid
 
 Supports treekill, where child processes are recursively terminated
 
-
-[![Try with Replit](https://replit.com/badge?caption=Try%20with%20Replit)](https://replit.com/@nktnet1/kill-sync-example#index.js)
-
 </div>
 
 ---
