@@ -2,7 +2,7 @@
 
 # [![Kill Sync](logo.svg)](https://github.com/nktnet1/kill-sync)
 
-Synchronousless kill processes based on their pid
+Synchronously kill processes based on their pid
 
 Supports treekill, where child processes are recursively terminated
 
