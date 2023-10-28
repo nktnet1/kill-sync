@@ -32,8 +32,8 @@ killSync(pid, signal)
 killSync(pid, signal, recursive)
 ```
 - **`pid`**: a number denoting the [process identifier](https://en.wikipedia.org/wiki/Process_identifier)
-- **`signal`**: number or string denoting the [inter-process communication signals](https://en.wikipedia.org/wiki/Signal_(IPC)) (default: `'SIGTERM'`)
-- **`recursive`**: boolean to enable tree-killing child processes (default: `false`)
+- **`signal`**: [inter-process communication signals](https://en.wikipedia.org/wiki/Signal_(IPC)). Default: `'SIGTERM'` (`15`)
+- **`recursive`**: boolean to enable tree-killing child processes. Default: `false`
 
 Example 1: kill a process with `SIGTERM`
 ```javascript
