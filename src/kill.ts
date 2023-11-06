@@ -13,7 +13,7 @@ import { killPid, treeKill } from './treekill';
 const killSync = (
   pid: number,
   signal?: string | number,
-  recursive: boolean = false
+  recursive = false
 ): void => {
   signal = signal ?? 'SIGTERM';
   if (!recursive) {
