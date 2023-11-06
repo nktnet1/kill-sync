@@ -6,7 +6,7 @@
 
 import { execSync } from 'child_process';
 
-type PPID_HASH = Record<number, number[]>;
+type PpidMap = Record<number, number[]>;
 
 interface PidItem {
   pid: number;
@@ -25,6 +25,7 @@ const getAllPids = (): PidItem[] =>
     .trim()
     .split('\n')
     .map((row: string) => {
+      /* istanbul ignore next */
       const [, pid, ppid] = /\s*(\d+)\s*(\d+)/.exec(row) ?? [];
       return {
         pid: Number(pid),
@@ -40,7 +41,7 @@ const getAllPids = (): PidItem[] =>
  */
 const getAllChilds = (parentPid: number): number[] => {
   const all = getAllPids();
-  const ppidHash: PPID_HASH = all.reduce((hash: PPID_HASH, item) => {
+  const ppidHash: PpidMap = all.reduce((hash: PpidMap, item) => {
     hash[item.ppid] = (hash[item.ppid] || []).concat(item.pid);
     return hash;
   }, {});
