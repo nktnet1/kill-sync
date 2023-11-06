@@ -2,6 +2,49 @@
 
 # [![Kill Sync](logo.svg)](https://github.com/nktnet1/kill-sync)
 
+[![pipeline](https://github.com/nktnet1/kill-sync/actions/workflows/pipeline.yml/badge.svg)](https://github.com/nktnet1/kill-sync/actions/workflows/pipeline.yml)
+&nbsp;
+[![codecov](https://codecov.io/gh/nktnet1/kill-sync/graph/badge.svg?token=1GEKQVOV2N)](https://codecov.io/gh/nktnet1/kill-sync)
+&nbsp;
+[![Maintainability](https://api.codeclimate.com/v1/badges/22754e8b9e4115bfea34/maintainability)](https://codeclimate.com/github/nktnet1/kill-sync/maintainability)
+&nbsp;
+[![Snyk Security](https://snyk.io/test/github/nktnet1/kill-sync/badge.svg)](https://snyk.io/test/github/nktnet1/kill-sync)
+&nbsp;
+[![GitHub top language](https://img.shields.io/github/languages/top/nktnet1/kill-sync)](https://github.com/search?q=repo%3Anktnet1%2Fkill-sync++language%3ATypeScript&type=code)
+
+[![NPM Version](https://img.shields.io/npm/v/kill-sync?logo=npm)](https://www.npmjs.com/package/kill-sync?activeTab=versions)
+&nbsp;
+[![install size](https://packagephobia.com/badge?p=kill-sync)](https://packagephobia.com/result?p=kill-sync)
+&nbsp;
+[![Depfu](https://badges.depfu.com/badges/eb25f8d58645072d8c825936b35eefdf/overview.svg)](https://depfu.com/github/nktnet1/kill-sync?project_id=39387)
+&nbsp;
+[![NPM License](https://img.shields.io/npm/l/kill-sync)](https://opensource.org/license/mit/)
+&nbsp;
+[![GitHub issues](https://img.shields.io/github/issues/nktnet1/kill-sync.svg?style=social)](https://github.com/nktnet1/kill-sync/issues)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nktnet1_kill-sync&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=nktnet1_kill-sync)
+&nbsp;
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a0603f8002a64358bb27d108a34ea9fd)](https://app.codacy.com/gh/nktnet1/kill-sync/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+&nbsp;
+[![DeepSource](https://app.deepsource.com/gh/nktnet1/kill-sync.svg/?label=active+issues&show_trend=true&token=ZT1DUc2410SDoicC-C4SCDrq)](https://app.deepsource.com/gh/nktnet1/kill-sync/)
+&nbsp;
+[![codebeat badge](https://codebeat.co/badges/bfa3396a-d5c5-424f-b689-b8e89996d996)](https://codebeat.co/projects/github-com-nktnet1-kill-sync-main)
+&nbsp;
+[![GitHub stars](https://img.shields.io/github/stars/nktnet1/kill-sync.svg?style=social)](https://github.com/nktnet1/kill-sync/stargazers)
+
+[![Downloads Total](https://badgen.net/npm/dt/kill-sync)](https://moiva.io/?npm=kill-sync)
+&nbsp;
+[![Downloads Yearly](https://badgen.net/npm/dy/kill-sync)](https://moiva.io/?npm=kill-sync)
+&nbsp;
+[![Downloads Monthly](https://badgen.net/npm/dm/kill-sync)](https://moiva.io/?npm=kill-sync)
+&nbsp;
+[![Downloads Weekly](https://badgen.net/npm/dw/kill-sync)](https://moiva.io/?npm=kill-sync)
+&nbsp;
+[![Downloads Daily](https://badgen.net/npm/dd/kill-sync)](https://moiva.io/?npm=kill-sync)
+
+---
+
+
 Synchronously kill processes based on their pid
 
 Supports treekill, where child processes are recursively terminated
