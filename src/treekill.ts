@@ -8,7 +8,7 @@ import { execSync } from 'child_process';
 
 type PPID_HASH = Record<number, number[]>;
 
-interface PID_ITEM {
+interface PidItem {
   pid: number;
   ppid: number;
 }
@@ -17,15 +17,15 @@ interface PID_ITEM {
  * Retrieves a list of all running process IDs (PIDs) along with their parent
  * process IDs (PPIDs).
  *
- * @returns {PID_ITEM[]} An array of PID_ITEM objects containing PID and PPID.
+ * @returns {PidItem[]} An array of PidItem objects containing PID and PPID.
  */
-const getAllPids = (): PID_ITEM[] =>
+const getAllPids = (): PidItem[] =>
   execSync('ps -A -o pid=,ppid=')
     .toString()
     .trim()
     .split('\n')
     .map((row: string) => {
-      const [, pid, ppid] = row.match(/\s*(\d+)\s*(\d+)/) ?? [];
+      const [, pid, ppid] = /\s*(\d+)\s*(\d+)/.exec(row) ?? [];
       return {
         pid: Number(pid),
         ppid: Number(ppid)
