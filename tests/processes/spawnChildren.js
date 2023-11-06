@@ -18,6 +18,6 @@ for (let i = 0; i < 3; ++i) {
 
 process.send(pids);
 
-// setTimeout(() => {
-//   // Staying alive!
-// }, 10000);
+setTimeout(() => {
+  // Staying alive!
+}, 10000);

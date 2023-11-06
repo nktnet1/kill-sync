@@ -35,7 +35,7 @@ describe('Simple forked child process', () => {
       });
       done();
     });
-    // killSync(pid);
+    killSync(pid);
     expect(() => killSync(pid)).not.toThrow(Error);
   });
 

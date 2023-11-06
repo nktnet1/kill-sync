@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 import { killPid, treeKill } from './treekill';
 
 const killSync = (pid: number, signal?: string | number, recursive = false): void => {
@@ -9,7 +9,7 @@ const killSync = (pid: number, signal?: string | number, recursive = false): voi
   /* istanbul ignore next */
   switch (process.platform) {
     case 'win32':
-      execSync(`taskkill /pid ${pid} /T /F`);
+      spawnSync(`taskkill /pid ${pid} /T /F`, { shell: false });
       break;
     case 'darwin':
     default:
