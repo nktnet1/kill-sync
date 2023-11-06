@@ -1,7 +1,20 @@
 import { spawnSync } from 'child_process';
 import { killPid, treeKill } from './treekill';
 
-const killSync = (pid: number, signal?: string | number, recursive = false): void => {
+/**
+ * Kills a process with the given PID.
+ *
+ * @param {number} pid - The process ID to kill.
+ * @param {string | number} [signal='SIGTERM'] - signal to send to the process
+ * @param {boolean} [recursive=false] - pass true for tree kill
+ *
+ * @returns {void}
+ */
+const killSync = (
+  pid: number,
+  signal?: string | number,
+  recursive: boolean = false
+): void => {
   signal = signal ?? 'SIGTERM';
   if (!recursive) {
     return killPid(pid, signal);

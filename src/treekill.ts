@@ -45,7 +45,14 @@ const getAllChilds = (parentPid: number): number[] => {
     hash[item.ppid] = (hash[item.ppid] || []).concat(item.pid);
     return hash;
   }, {});
+
   const result: number[] = [];
+
+  /**
+   * Adds all children PIDs to the result array
+   *
+   * @param pid parent process ID of which to add children
+   */
   const recursivelAddChild = (pid: number) => {
     ppidHash[pid] = ppidHash[pid] || [];
     ppidHash[pid].forEach((childPid) => {
