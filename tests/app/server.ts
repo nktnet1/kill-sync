@@ -4,6 +4,7 @@ import { protocol, host, port } from './config.json';
 const SERVER_URL = `${protocol}://${host}:${port}`;
 
 const app = express();
+app.disable('x-powered-by');
 
 app.use(express.json());
 

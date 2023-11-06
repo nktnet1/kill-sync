@@ -23,7 +23,7 @@ const waitForServer = () => {
 };
 
 test('Shuts down server successfully', () => {
-  const server = spawn('ts-node', ['tests/app/server']);
+  const server = spawn('npm', ['start']);
   const pid = server.pid as number;
   expect(pid).toStrictEqual(expect.any(Number));
 
