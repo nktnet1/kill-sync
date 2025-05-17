@@ -5,6 +5,7 @@
  */
 
 import { execSync } from 'child_process';
+import { isKillError } from './utils';
 
 type PpidMap = Record<number, number[]>;
 
@@ -74,8 +75,8 @@ const getAllChilds = (parentPid: number): number[] => {
 export const killPid = (pid: number, signal: number | string) => {
   try {
     process.kill(pid, signal);
-  } catch (err: any) {
-    if (err.code !== 'ESRCH') {
+  } catch (err: unknown) {
+    if (isKillError(err) && err.code !== 'ESRCH') {
       throw err;
     }
   }

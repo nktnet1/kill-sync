@@ -24,7 +24,7 @@ jobs:
         run: corepack enable pnpm
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm i
 
       - name: Run ESLint
         run: pnpm lint

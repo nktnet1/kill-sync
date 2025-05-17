@@ -1,13 +1,14 @@
 import { ChildProcess, fork } from 'child_process';
 import { afterAll, beforeEach, describe, expect, test } from 'vitest';
 import killSync from '../src/kill';
+import { isKillError } from '../src/utils';
 
 export const waitForPidToDie = (pid: number, callback: () => void) => {
   const id = setInterval(() => {
     try {
       process.kill(pid, 0);
-    } catch (err: any) {
-      if (err.code === 'ESRCH') {
+    } catch (err: unknown) {
+      if (isKillError(err) && err.code === 'ESRCH') {
         clearInterval(id);
         callback();
       }
