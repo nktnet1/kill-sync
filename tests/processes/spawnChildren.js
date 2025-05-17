@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { fork } = require('child_process');
 
 if (!process.send) {

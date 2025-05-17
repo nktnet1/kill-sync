@@ -1,8 +1,9 @@
 import { spawn } from 'child_process';
-import request, { CurlError } from 'sync-request-curl';
-import { protocol, host, port } from './app/config.json';
 import slync from 'slync';
-import killSync from '../src';
+import request, { CurlError } from 'sync-request-curl';
+import { expect, test } from 'vitest';
+import killSync from '../src/kill';
+import { protocol, host, port } from './app/config.json';
 
 const SERVER_URL = `${protocol}://${host}:${port}`;
 
@@ -35,7 +36,7 @@ test('Shuts down server successfully', () => {
 
   try {
     rootRequest();
-  } catch (error: any) {
+  } catch (error: unknown) {
     expect(error).toBeInstanceOf(CurlError);
     expect((error as CurlError).code).toStrictEqual(7);
   }
