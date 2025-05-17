@@ -29,7 +29,7 @@ const getAllPids = (): PidItem[] =>
       const [, pid, ppid] = /\s*(\d+)\s*(\d+)/.exec(row) ?? [];
       return {
         pid: Number(pid),
-        ppid: Number(ppid)
+        ppid: Number(ppid),
       };
     });
 
