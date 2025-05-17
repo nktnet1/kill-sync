@@ -20,6 +20,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Enable pnpm
+        run: corepack enable pnpm
+
       - name: Install dependencies
         run: pnpm ci
 
