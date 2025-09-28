@@ -44,7 +44,6 @@
 
 ---
 
-
 Synchronously kill processes based on their pid
 
 Supports treekill, where child processes are recursively terminated

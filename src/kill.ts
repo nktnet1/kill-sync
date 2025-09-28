@@ -15,7 +15,7 @@ const killSync = (pid: number, signal?: string | number, recursive = false): voi
   if (!recursive) {
     return killPid(pid, signal);
   }
-  /* istanbul ignore next */
+  /* v8 ignore next 6 */
   switch (process.platform) {
     case 'win32':
       execSync(`taskkill /pid ${pid} /T /F`);

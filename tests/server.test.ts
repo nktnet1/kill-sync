@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 import slync from 'slync';
 import request, { CurlError } from 'sync-request-curl';
 import { expect, test } from 'vitest';
-import killSync from '../src/kill';
+import killSync from '../src';
 import { protocol, host, port } from './app/config.json';
 
 const SERVER_URL = `${protocol}://${host}:${port}`;

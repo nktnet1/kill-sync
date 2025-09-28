@@ -26,7 +26,7 @@ const getAllPids = (): PidItem[] =>
     .trim()
     .split('\n')
     .map((row: string) => {
-      /* istanbul ignore next */
+      /* v8 ignore next */
       const [, pid, ppid] = /\s*(\d+)\s*(\d+)/.exec(row) ?? [];
       return {
         pid: Number(pid),
@@ -76,6 +76,7 @@ export const killPid = (pid: number, signal: number | string) => {
   try {
     process.kill(pid, signal);
   } catch (err: unknown) {
+    /* v8 ignore next 3 */
     if (isKillError(err) && err.code !== 'ESRCH') {
       throw err;
     }
