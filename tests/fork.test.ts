@@ -1,6 +1,6 @@
 import { ChildProcess, fork } from 'child_process';
 import { afterAll, beforeEach, describe, expect, test } from 'vitest';
-import killSync from '../src/kill';
+import killSync from '../src';
 import { isKillError } from '../src/utils';
 
 export const waitForPidToDie = (pid: number, callback: () => void) => {
