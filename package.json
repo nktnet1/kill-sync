@@ -19,7 +19,7 @@
     "lf": "eslint --fix './**/*.ts'",
     "tsc": "tsc --noEmit",
     "build": "tsdown",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm build"
   },
   "keywords": [
     "nodejs",
