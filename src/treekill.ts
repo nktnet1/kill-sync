@@ -40,7 +40,7 @@ const getAllPids = (): PidItem[] =>
  * @param {number} parentPid - The parent PID for which to find child PIDs.
  * @returns {number[]} An array of child PIDs.
  */
-const getAllChilds = (parentPid: number): number[] => {
+const getAllChildPIDs = (parentPid: number): number[] => {
   const all = getAllPids();
   const ppidHash: PpidMap = all.reduce((hash: PpidMap, item) => {
     hash[item.ppid] = (hash[item.ppid] || []).concat(item.pid);
@@ -91,8 +91,7 @@ export const killPid = (pid: number, signal: number | string) => {
  * @param {number | string} signal - the signal to send for termination.
  */
 export const treeKill = (pid: number, signal: string | number) => {
-  const childs = getAllChilds(pid);
-  childs.forEach((pid: number) => {
+  getAllChildPIDs(pid).forEach((pid: number) => {
     killPid(pid, signal);
   });
   killPid(pid, signal);
