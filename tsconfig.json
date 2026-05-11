@@ -6,17 +6,17 @@
     "esModuleInterop": true,
     "lib": ["es5", "es2015", "esnext", "dom"],
     "types": ["node"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "sourceMap": true,
     "strict": true,
-    "outDir": "dist/esm",
     "skipLibCheck": true,
     "target": "ES6"
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "tests/**/*.ts"
   ]
 }

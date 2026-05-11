@@ -1,6 +1,7 @@
 import { spawn } from 'child_process';
 import slync from 'slync';
-import request, { CurlError } from 'sync-request-curl';
+import request from 'sync-request-curl';
+import { CurlError } from 'sync-request-curl/errors';
 import { expect, test } from 'vitest';
 import killSync from '../src';
 import { protocol, host, port } from './app/config.json';
