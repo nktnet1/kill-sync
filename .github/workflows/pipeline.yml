@@ -1,4 +1,5 @@
 name: Pipeline
+
 permissions:
   contents: read
 
@@ -8,26 +9,34 @@ on:
       - main
     paths-ignore:
       - '**/README.md'
+
   pull_request:
     branches:
-      - "*"
+      - '*'
     paths-ignore:
       - '**/README.md'
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     strategy:
-      matrix:
-        node-version: [22.x, 24.x]
       fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        node-version:
+          - 22.x
+          - 24.x
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -44,6 +53,7 @@ jobs:
         run: pnpm tc
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == '24.x'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
