@@ -24,7 +24,8 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-          - windows-latest
+          # Windows 11 issue: https://github.com/JCMais/node-libcurl/issues/438
+          # - windows-latest
         node-version:
           - 22.x
           - 24.x
