@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { killPid, treeKill } from './treekill';
 
 /**
@@ -18,7 +18,7 @@ const killSync = (pid: number, signal?: string | number, recursive = false): voi
   /* v8 ignore next 6 */
   switch (process.platform) {
     case 'win32':
-      execSync(`taskkill /pid ${pid} /T /F`);
+      execFileSync('taskkill', ['/pid', pid.toString(), '/T', '/F']);
       break;
     case 'darwin':
     default:
