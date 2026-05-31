@@ -1,11 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { fork } = require('child_process');
+const { fork } = require("child_process");
 
 if (!process.send) {
-  throw new Error('process.send is undefined');
+  throw new Error("process.send is undefined");
 }
 
-const childPath = 'tests/processes/child.js';
+const childPath = "tests/processes/child.js";
 const pids = [];
 
 for (let i = 0; i < 3; ++i) {

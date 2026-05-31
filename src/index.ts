@@ -1,3 +1,3 @@
-import killSync from './kill';
+import killSync from "./kill";
 
 export default killSync;

@@ -1,14 +1,14 @@
-import { ChildProcess, fork } from 'child_process';
-import { afterAll, beforeEach, describe, expect, test } from 'vitest';
-import killSync from '../src';
-import { isKillError } from '../src/utils';
+import { type ChildProcess, fork } from "child_process";
+import { afterAll, beforeEach, describe, expect, test } from "vitest";
+import killSync from "../src";
+import { isKillError } from "../src/utils";
 
-export const waitForPidToDie = (pid: number, callback: () => void) => {
+const waitForPidToDie = (pid: number, callback: () => void) => {
   const id = setInterval(() => {
     try {
       process.kill(pid, 0);
     } catch (err: unknown) {
-      if (isKillError(err) && err.code === 'ESRCH') {
+      if (isKillError(err) && err.code === "ESRCH") {
         clearInterval(id);
         callback();
       }
@@ -16,11 +16,11 @@ export const waitForPidToDie = (pid: number, callback: () => void) => {
   }, 100);
 };
 
-describe('Simple forked child process', () => {
+describe("Simple forked child process", () => {
   let child: ChildProcess;
   let pid: number;
   beforeEach(() => {
-    child = fork('./tests/processes/child.js');
+    child = fork("./tests/processes/child.js");
     pid = child.pid as number;
     expect(pid).toStrictEqual(expect.any(Number));
   });
@@ -29,12 +29,12 @@ describe('Simple forked child process', () => {
     killSync(pid);
   });
 
-  test('Double killing will not throw errors', () =>
+  test("Double killing will not throw errors", () =>
     new Promise<void>((done) => {
-      child.on('exit', (_, signal) => {
-        expect(signal).toBe('SIGTERM');
+      child.on("exit", (_, signal) => {
+        expect(signal).toBe("SIGTERM");
         waitForPidToDie(pid, () => {
-          expect(() => killSync(pid, 'SIGTERM')).not.toThrow(Error);
+          expect(() => killSync(pid, "SIGTERM")).not.toThrow(Error);
         });
         done();
       });
@@ -42,20 +42,21 @@ describe('Simple forked child process', () => {
       expect(() => killSync(pid)).not.toThrow(Error);
     }));
 
-  test.each(['SIGINT', 'SIGTERM', 'SIGKILL'])(
-    'Can kill a forked process with signal: %s',
-    (expectedSignal) =>
-      new Promise((done) => {
-        child.on('exit', (_, signal) => {
-          expect(signal).toBe(expectedSignal);
-          done();
-        });
+  test.each([
+    "SIGINT",
+    "SIGTERM",
+    "SIGKILL",
+  ])("Can kill a forked process with signal: %s", (expectedSignal) =>
+    new Promise((done) => {
+      child.on("exit", (_, signal) => {
+        expect(signal).toBe(expectedSignal);
+        done();
+      });
 
-        killSync(pid, expectedSignal);
-      }),
-  );
+      killSync(pid, expectedSignal);
+    }));
 
-  test('Killing a non-existent process is okay', () => {
+  test("Killing a non-existent process is okay", () => {
     const isPidRunning = (pid: number) => {
       try {
         process.kill(pid, 0);
@@ -72,16 +73,16 @@ describe('Simple forked child process', () => {
   });
 });
 
-describe('Child process that spawns other processes', () => {
+describe("Child process that spawns other processes", () => {
   test(
-    'killing tree recursively',
+    "killing tree recursively",
     () =>
       new Promise<void>((done) => {
-        const root = fork('./tests/processes/spawnChildren.js');
+        const root = fork("./tests/processes/spawnChildren.js");
         const rootPid = root.pid as number;
         expect(rootPid).toStrictEqual(expect.any(Number));
 
-        root.on('message', (pids: number[]) => {
+        root.on("message", (pids: number[]) => {
           let childrenKilled = 0;
           [rootPid].concat(pids).forEach((pid) => {
             waitForPidToDie(pid, () => {
@@ -93,7 +94,7 @@ describe('Child process that spawns other processes', () => {
           });
 
           // Will fail (timeout) if 'true' is not specified (no recursion)
-          killSync(rootPid, 'SIGINT', true);
+          killSync(rootPid, "SIGINT", true);
         });
       }),
     10000,

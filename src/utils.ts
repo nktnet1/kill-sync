@@ -6,5 +6,5 @@
  * @returns true if the error contains the 'code' property
  */
 export const isKillError = (err: unknown) => {
-  return typeof err === 'object' && err !== null && 'code' in err;
+  return typeof err === "object" && err !== null && "code" in err;
 };

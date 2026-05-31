@@ -4,8 +4,8 @@
  * - https://github.com/pkrumins/node-tree-kill/blob/master/index.js
  */
 
-import { execSync } from 'child_process';
-import { isKillError } from './utils';
+import { execSync } from "child_process";
+import { isKillError } from "./utils";
 
 type PpidMap = Record<number, number[]>;
 
@@ -21,10 +21,10 @@ interface PidItem {
  * @returns {PidItem[]} An array of PidItem objects containing PID and PPID.
  */
 const getAllPids = (): PidItem[] =>
-  execSync('ps -A -o pid=,ppid=')
+  execSync("ps -A -o pid=,ppid=")
     .toString()
     .trim()
-    .split('\n')
+    .split("\n")
     .map((row: string) => {
       /* v8 ignore next */
       const [, pid, ppid] = /\s*(\d+)\s*(\d+)/.exec(row) ?? [];
@@ -77,7 +77,7 @@ export const killPid = (pid: number, signal: number | string) => {
     process.kill(pid, signal);
   } catch (err: unknown) {
     /* v8 ignore next 3 */
-    if (isKillError(err) && err.code !== 'ESRCH') {
+    if (isKillError(err) && err.code !== "ESRCH") {
       throw err;
     }
   }

@@ -1,5 +1,5 @@
-import { execFileSync } from 'child_process';
-import { killPid, treeKill } from './treekill';
+import { execFileSync } from "child_process";
+import { killPid, treeKill } from "./treekill";
 
 /**
  * Kills a process with the given PID.
@@ -10,17 +10,22 @@ import { killPid, treeKill } from './treekill';
  *
  * @returns {void}
  */
-const killSync = (pid: number, signal?: string | number, recursive = false): void => {
-  signal = signal ?? 'SIGTERM';
+const killSync = (
+  pid: number,
+  signal?: string | number,
+  recursive = false,
+): void => {
+  signal = signal ?? "SIGTERM";
   if (!recursive) {
-    return killPid(pid, signal);
+    killPid(pid, signal);
+    return;
   }
   /* v8 ignore next 6 */
   switch (process.platform) {
-    case 'win32':
-      execFileSync('taskkill', ['/pid', pid.toString(), '/T', '/F']);
+    case "win32":
+      execFileSync("taskkill", ["/pid", pid.toString(), "/T", "/F"]);
       break;
-    case 'darwin':
+    // case "darwin":
     default:
       treeKill(pid, signal);
       break;

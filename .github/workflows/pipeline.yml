@@ -47,8 +47,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run ESLint
-        run: pnpm lint
+      - name: Run Biome Checks
+        run: pnpm check
 
       - name: Run tests with coverage
         run: pnpm tc
