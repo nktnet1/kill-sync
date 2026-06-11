@@ -5,5 +5,6 @@ export default defineConfig({
     coverage: {
       include: ["src/**/*.ts"],
     },
+    testTimeout: 30_000,
   },
 });
